@@ -51,7 +51,7 @@ export default apiInitializer((api) => {
     href: kHref,
     before: 'latest',
     customHref: (category, args, router) => {
-        if (!category && !args?.tagId) {
+        if (!category && !args?.tagId && !args?.tag) {
             return kHref
         }
         // 浏览分类或标签时，最新发表栏目的 URL 为分类路径 + `/l/` + kHref，须判断是否已存在 `/l/` 子路径
