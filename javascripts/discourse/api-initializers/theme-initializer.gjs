@@ -51,10 +51,10 @@ export default apiInitializer((api) => {
     href: kHref,
     before: 'latest',
     customHref: (category, args, router) => {
-        if (!category) {
+        if (!category && !args?.tagId) {
             return kHref
         }
-        // 浏览分类时，最新发表栏目的 URL 为分类路径 + `/l/` + kHref，须判断是否已存在 `/l/` 子路径
+        // 浏览分类或标签时，最新发表栏目的 URL 为分类路径 + `/l/` + kHref，须判断是否已存在 `/l/` 子路径
         const url = parseUrl(router.currentURL)
         if (url.curDir.endsWith('/l/')) {
             return joinPath(url.curDir, kHref)
